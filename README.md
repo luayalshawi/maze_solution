@@ -30,6 +30,7 @@ This has been tested on Ubuntu 20.04 and ROS (noetic).
 
         catkin_make
 
+4. Source the enviroment. Refer to SSLE readme file for sourcing Gazebo & PX4
 
 # Run the challenge
     roslaunch maze_solution multi_exp_sim_sslidar.launch
