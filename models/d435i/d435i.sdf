@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="d435i">
+    <pose>0 0 0.015 0 0 0</pose>
+    <link name="realsense_camera_link">
+      <!-- 物理参数 -->
+      <inertial>
+        <mass>0.001</mass>
+        <inertia>
+          <ixx>0.000001</ixx>
+          <ixy>0</ixy>
+          <ixz>0</ixz>
+          <iyy>0.000001</iyy>
+          <iyz>0</iyz>
+          <izz>0.000001</izz>
+        </inertia>
+      </inertial>
+      <self_collide>0</self_collide>
+      <enable_wind>0</enable_wind>
+      <kinematic>0</kinematic>
+      <gravity>1</gravity>
+
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://d435i/meshes/d435i.dae</uri>
+          </mesh>
+        </geometry>
+      </visual>
+      <sensor name="depth_camera" type="depth">
+        <pose>0.09 0 -0.01 0 0 0</pose>
+        <update_rate>15</update_rate>
+        <visulize>1</visulize>
+        <camera>
+          <horizontal_fov>1.20428</horizontal_fov>
+          <image>
+            <format>R8G8B8</format>
+            <width>640</width>
+            <height>480</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+        </camera>
+        <plugin filename="libgazebo_ros_openni_kinect.so" name="camera_controller">
+          <!-- <robotNamespace>px4vision</robotNamespace> -->
+          <cameraName>realsense_plugin</cameraName>
+          <alwaysOn>true</alwaysOn>
+          <pointCloudCutoff>0.2</pointCloudCutoff>
+          <pointCloudCutoffMax>10</pointCloudCutoffMax>
+          <imageTopicName>color/image_raw</imageTopicName>
+          <cameraInfoTopicName>color/camera_info</cameraInfoTopicName>
+          <depthImageTopicName>depth/image_raw</depthImageTopicName>
+          <depthImageCameraInfoTopicName>depth/camera_info</depthImageCameraInfoTopicName>
+          <pointCloudTopicName>depth/points</pointCloudTopicName>
+          <frameName>camera_link</frameName>
+          <distortion_k1>0.0</distortion_k1>
+          <distortion_k2>0.0</distortion_k2>
+          <distortion_k3>0.0</distortion_k3>
+          <distortion_t1>0.0</distortion_t1>
+          <distortion_t2>0.0</distortion_t2>
+        </plugin>
+      </sensor>
+    </link>
+
+
+      <!-- <sensor name="color" type="camera">
+        <pose frame="">0 -0.0 0.004 0 0 0</pose>
+        <camera name="realsense_camera">
+
+
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>RGB_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>60</update_rate>
+        <visualize>1</visualize>
+      </sensor>
+
+
+      <sensor name="ired1" type="camera">
+        <pose frame="">0 -0.025 0.004 0 0 0</pose>
+        <camera name="ired1">
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>L_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>60</update_rate>
+        <visualize>0</visualize>
+      </sensor>
+
+      <sensor name="ired2" type="camera">
+        <pose frame="">0 0.025 0.004 0 0 0</pose>
+        <camera name="ired2">
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+            <format>L_INT8</format>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.001</stddev>
+          </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>60</update_rate>
+        <visualize>0</visualize>
+      </sensor>
+
+      <sensor name="depth" type="depth">
+        <pose frame="">0 -0.0 0.004 0 0 0</pose>
+        <camera name="depth_camera">
+          <horizontal_fov>1.047</horizontal_fov>
+          <image>
+            <width>640</width>
+            <height>480</height>
+          </image>
+          <clip>
+            <near>0.1</near>
+            <far>100</far>
+          </clip>
+          <noise>
+            <type>gaussian</type>
+            <mean>0.0</mean>
+            <stddev>0.007</stddev>
+          </noise>
+        </camera>
+        <always_on>1</always_on>
+        <update_rate>60</update_rate>
+        <visualize>0</visualize>
+      </sensor>
+    </link>
+    <plugin name="realsense_plugin" filename="librealsense_gazebo_plugin.so">
+      <depthTopicName>depth/image_raw</depthTopicName>
+      <depthCameraInfoTopicName>depth/camera_info</depthCameraInfoTopicName>
+      <colorTopicName>color/image_raw</colorTopicName>
+      <colorCameraInfoTopicName>color/camera_info</colorCameraInfoTopicName>
+      <infrared1TopicName>infra1/image_raw</infrared1TopicName>
+      <infrared1CameraInfoTopicName>infra1/camera_info</infrared1CameraInfoTopicName>
+      <infrared2TopicName>infra2/image_raw</infrared2TopicName>
+      <infrared2CameraInfoTopicName>infra2/camera_info</infrared2CameraInfoTopicName>
+      <pointCloudCutoff>0.2</pointCloudCutoff>
+      <pointCloudCutoffMax>10</pointCloudCutoffMax>
+      <pointCloudTopicName>depth/points</pointCloudTopicName>
+      <pointCloud>true</pointCloud>
+      <rangeMinDepth>0.2</rangeMinDepth>
+      <rangeMaxDepth>5.0</rangeMaxDepth>
+      <colorOpticalframeName>realsense_camera_link</colorOpticalframeName>
+      <depthOpticalframeName>realsense_camera_link2</depthOpticalframeName>
+      <infrared1OpticalframeName>realsense_camera_link3</infrared1OpticalframeName>
+      <infrared2OpticalframeName>realsense_camera_link4</infrared2OpticalframeName>
+    </plugin>  -->
+  </model>
+</sdf>
