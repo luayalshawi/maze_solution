@@ -25,12 +25,14 @@ This has been tested on Ubuntu 20.04 and ROS (noetic).
     For realsense sensors and lidar Gazebo plugins, in your workspace, run:
 
         git clone https://github.com/SeanZsya/gazebo_pulgins
+3. Clone this repository inside ~/catkin_maze_solution/src
 
-3. Build
+        https://github.com/luayalshawi/maze_solution.git
+4. Build
 
         catkin_make
 
-4. Source the enviroment. Refer to SSLE readme file for sourcing Gazebo & PX4
+5. Source the enviroment. Refer to SSLE readme file for sourcing Gazebo & PX4
 
 # Run the challenge
     roslaunch maze_solution multi_exp_sim_sslidar.launch
