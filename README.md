@@ -1,5 +1,5 @@
 # UAV Maze Solution
-The is a UAV maze solution reference utilizing Fast UAV ExpLoration [FUEL](https://github.com/HKUST-Aerial-Robotics/FUEL). To explore using a LiDar and a camera to detect exits. The shortest exit will be identified and the drone will travel toward the shortest exit.
+The is a UAV maze solution reference utilizing Fast UAV ExpLoration [FUEL](https://github.com/HKUST-Aerial-Robotics/FUEL). To explore using a LiDar and a camera to detect exits. The shortest exit will be identified and the drone will travel toward the shortest exit. [Video Demo ](https://youtu.be/Zip__4asUyY)
 
 <p id="demo2" align="center">
     <img src="files/maze.png" width = "600" height = "325"/>
